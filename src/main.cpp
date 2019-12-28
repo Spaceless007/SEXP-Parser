@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    // TODO : Make stdin for the filename
+    // TODO : Make cin for the filename
     string fileName = "../examples/capture.sexp";
     string sexpExpression = readFileSEXP(fileName);
 //    string parsedExpression = parseSEXP(sexpExpression);
