@@ -24,6 +24,8 @@ This project is a parser for s-expressions in C/C++. It was done by Nathanaël B
 4.1 Write comments and documentation
 5. Make sure everything is good, git, doc, code, etc.
 
+During my research on S-Expressions, I read that these expressions are like trees, so I thought about implementing a tree. Thing is, the more I thought about it, the more it seemed overkill. Trees are usefull when we want to search en element, when we want to reorganise the tree, to remove certain elements, and many other features. Since this project doesn't use these features, it is not necessary to implement a tree for the parser. 
+
 # How to improve the parser
 
 # Conclusion
