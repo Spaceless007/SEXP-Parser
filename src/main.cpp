@@ -5,9 +5,9 @@
  ***********************************************************************************/
 
 /// STANDARD INCLUDES
-#include <cstdio>
 #include <cstdlib>
 #include <string>
+#include <iostream>
 
 /// SEXP-PARSER INCLUDES
 #include "sexp-parser.hpp"
@@ -22,7 +22,7 @@ int main()
     string fileName = "../examples/capture.sexp";
     string sexpExpression = readFileSEXP(fileName);
     string parsedExpression = parseSEXP(sexpExpression);
-    printf("Here is the parsed s-expression\n");
+    cout << "Here is the parsed s-expression" << endl;
     printSEXP(parsedExpression);
 
 	return EXIT_SUCCESS;

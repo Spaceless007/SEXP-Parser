@@ -13,8 +13,14 @@ const string ERR_FILE_MESSAGE = "Could not open the file\n";
 const char PARENTHESE_LEFT = '(';
 const char PARENTHESE_RIGHT = ')';
 const char SPACE = ' ';
-const char QUOTE = '"';
 const char TAB = '\t';
+const char QUOTE = '"'; // TODO : To implement
+const char START_CORRECT_CHAR = 44; // is a comma
+const char END_CORRECT_CHAR = 122; // is the letter z
+
+// to explicitly tell the type of each element of the s-expression
+const string DATA_TYPE_ELEMENT = "d:";
+const string VALUE_ELEMENT = "v:";
 
 /// FUNCTIONS FOR THE PARSER
 
