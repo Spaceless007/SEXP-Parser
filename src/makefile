@@ -1,3 +1,9 @@
+####################################################################################
+# @brief The makefile for the s-expression parser
+# @author Nathanaël Beaudoin-Dion
+# @date December 27th 2019
+####################################################################################
+
 CC=g++
 CFLAGS=-W -Wall -ansi -pedantic
 LDFLAGS=
