@@ -1,13 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <assert.h>
+#include <cassert>
+#include "sexp-parser.hpp"
 
 using namespace std;
 
-string readFileSEXP(const string fileName) {
+string readFileSEXP(const string& fileName) {
     ifstream file;
     string fileTextTemp;
     string lineTemp;
@@ -18,15 +19,26 @@ string readFileSEXP(const string fileName) {
         }
         file.close();
     } else {
-        cout << "Could not open the file\n";
+        cout << ERR_FILE_MESSAGE;
         assert(file.is_open());
     }
     return fileTextTemp;
 }
-string parseSEXP(const string sexpExpression) {
 
+string parseSEXP(const string& sexpExpression) {
+    string parsedExpression;
+    for (int i = 0; i < sexpExpression.length() - 1; i++) {
+        char current = sexpExpression[i];
+        char next = sexpExpression[i + 1];
+        if ((current == SPACE && next == SPACE) || (current == SPACE && next == PARANTHESE_LEFT) ||
+            (current == SPACE && next == PARANTHESE_RIGHT) || (current == TAB))
+            continue;
+        else
+            parsedExpression += current;
+    }
+    return parsedExpression;
 }
 
-void printSEXP(const string parsedExpression) {
+void printSEXP(const string& parsedExpression) {
     cout << parsedExpression;
 }
