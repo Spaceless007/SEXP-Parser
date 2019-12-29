@@ -18,7 +18,7 @@ using namespace std;
 /// IMPLEMENTATION OF MAIN FUNCTION
 int main()
 {
-    // TODO : Make cin for the filename
+    // TODO : Make cin for the filename by giving choices
     string fileName = "../examples/capture.sexp";
     string sexpExpression = readFileSEXP(fileName);
     string parsedExpression = parseSEXP(sexpExpression);

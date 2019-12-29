@@ -34,7 +34,7 @@ string readFileSEXP(const string& fileName) {
     }
     return fileTextTemp;
 }
-
+// TODO : Add "" implementation and test with other cases
 string parseSEXP(const string& sexpExpression) {
     string parsedExpression;
     for (int i = 0; i < sexpExpression.length() - 1; i++) {
@@ -48,7 +48,7 @@ string parseSEXP(const string& sexpExpression) {
     }
     return parsedExpression;
 }
-
+// TODO : Pretty print the s-expression
 void printSEXP(const string& parsedExpression) {
     cout << parsedExpression;
 }
