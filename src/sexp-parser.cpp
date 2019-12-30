@@ -60,25 +60,26 @@ string parseSEXP(const string& sexpExpression) {
 int count = 4; // TODO : Remove this
 // TODO : Pretty print the s-expression
 // From https://stackoverflow.com/questions/1649027/how-do-i-print-out-a-tree-structure
-void printSEXP(string parsedExpression, string indentation, bool last) {
-    int i = 0;
-    while (i != 8) {
-        char current = parsedExpression[0];
-        char next = parsedExpression[1];
-        if (current == PARENTHESE_LEFT && next == PARENTHESE_LEFT) {
-            count--;
-            cout << indentation << parsedExpression[0] << endl;
-            parsedExpression.erase(parsedExpression[0]);
-        } else if (current == PARENTHESE_RIGHT) {
-            count++;
-            cout << indentation << parsedExpression[0] << endl;
-            parsedExpression.erase(parsedExpression[0]);
-        } else {
-            count--;
-            cout << indentation << parsedExpression.substr(0, 12) << endl;
-            parsedExpression.erase(0, 12);
-        }
-        indentation += last ? "   " : "|  ";
-        i++;
-    }
+void printSEXP(const string& parsedExpression) {
+//    int i = 0;
+//    while (i != 8) {
+//        char current = parsedExpression[0];
+//        char next = parsedExpression[1];
+//        if (current == PARENTHESE_LEFT && next == PARENTHESE_LEFT) {
+//            count--;
+//            cout << indentation << parsedExpression[0] << endl;
+//            parsedExpression.erase(parsedExpression[0]);
+//        } else if (current == PARENTHESE_RIGHT) {
+//            count++;
+//            cout << indentation << parsedExpression[0] << endl;
+//            parsedExpression.erase(parsedExpression[0]);
+//        } else {
+//            count--;
+//            cout << indentation << parsedExpression.substr(0, 12) << endl;
+//            parsedExpression.erase(0, 12);
+//        }
+//        indentation += last ? "   " : "|  ";
+//        i++;
+//    }
+    cout << parsedExpression;
 }

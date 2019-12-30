@@ -41,4 +41,4 @@ string parseSEXP(const string& sexpExpression);
  *  @brief Print an s-expression on the standard output
  *  @param the parsed s-expression
  **/
-void printSEXP(string parsedExpression, string indentation, bool last);
+void printSEXP(const string& parsedExpression);
