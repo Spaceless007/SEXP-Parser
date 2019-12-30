@@ -8,7 +8,7 @@ This project is a parser for s-expressions in C/C++. It was done by Nathanaël B
 
 ### CLion
 
-This project was made using the CLion IDE by JetBrains. The project can be compiled, executed and debugged with this IDE using the CMakeList file and any toolchain compatible with the machine running the project. Since this project was made using Windows 10, the toolchain used was MinGW.
+This project was made using the CLion IDE by JetBrains (https://www.jetbrains.com/). The project can be compiled, executed and debugged with this IDE using the CMakeList file in the repository and any toolchain compatible with the machine running the project. Since this project was made using Windows 10, the toolchain used was MinGW. See this tutorial on how to setup CLion with MinGW on Window: https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.html. 
 
 ### Windows
 
