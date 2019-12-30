@@ -12,17 +12,28 @@ This project was made using the CLion IDE by JetBrains (https://www.jetbrains.co
 
 ### Windows
 
-To run the SEXP-Parser on Windows with CMake, first CMake needs to be installed: https://cmake.org/download/. Afterward, the project can be executed with the CMake-GUI provided by CMake when it is installed.
+#### Compilation
+
+To run the SEXP-Parser on Windows with CMake, first CMake needs to be installed: https://cmake.org/download/. Afterward, the project can be executed with the help of CMake-GUI provided by CMake when it is installed.
 
 First, complete the two upper dialog boxes (NOTE: for the build directory, it is recommanded to create a new one named ```build```): 
+![CMake-GUI-Windows](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-1.PNG)
 
-![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-1.PNG)
-
-After, click on the button ```Configure``` and choose the MinGW Makefiles:
-
-![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-2.PNG)
+After, click on the button ```Configure```, choose the ```MinGW Makefiles``` and the ```Use default native compilers``` option:
+![CMake-GUI-Windows](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-2.PNG)
 
 Then, click on ```Generate```. Now, the build folder should contain a generated Makefile. To build and generate the executable file SEXP-Parser.exe, type in the command ```make``` inside a command prompt at the Makefile location, which is ```SEXP-Parser/build```. To execute the source code, simply execute the ```SEXP-Parser.exe``` file. 
+
+#### Cross-Compilation
+
+To cross-compile with Windows, the CMake-GUI is also needed.
+
+Like it is showned for the compilation on Windows subsection above, complete the two upper dialog boxes. Then, click on the ```Configure``` button and choose also the MinGW Makefiles. But, instead, choose the ```Specify options for cross-compiling```. With this tool, CMake can cross-compile with any compilers. Linux ARM based toolchains can be downloaded here: https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads. 
+
+Here is an example how a cross-compilation from Windows to Linux AArch64 GNU/Linux target (aarch64-none-linux-gnu):
+![CMake-GUI-CrossCompilation](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-crosscompile.PNG)
+
+After, it is the same procedure as the compilation showned above: click on ```Generate```, execute the command ```make``` in a command prompt and execute the ```SEXP-Parser``` file.
 
 ### Linux
 
@@ -49,5 +60,7 @@ The documentation for the source files of the project is following the Doxygen s
 ## 5. Cross-platforming
 
 # Conclusion and How to improve the parser
+
+- Faire script python pour compilation et cross-compilation de CMake sans IDE.
 
 [Conclude, talk about the project, what I learned, the difficulties, etc.] 
