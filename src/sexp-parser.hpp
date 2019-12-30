@@ -13,7 +13,6 @@ const string ERR_FILE_MESSAGE = "Could not open the file\n";
 const char PARENTHESE_LEFT = '(';
 const char PARENTHESE_RIGHT = ')';
 const char SPACE = ' ';
-const char TAB = '\t';
 const char QUOTE = '"'; // TODO : To implement
 const char START_CORRECT_CHAR = 44; // is a comma
 const char END_CORRECT_CHAR = 122; // is the letter z
@@ -42,4 +41,4 @@ string parseSEXP(const string& sexpExpression);
  *  @brief Print an s-expression on the standard output
  *  @param the parsed s-expression
  **/
-void printSEXP(const string& parsedExpression);
+void printSEXP(string parsedExpression, string indentation, bool last);

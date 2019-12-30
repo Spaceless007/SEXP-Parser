@@ -44,7 +44,7 @@ string parseSEXP(const string& sexpExpression) {
         char next = sexpExpression[i + 1];
         // current is an unnecessary character which is not added to the parsedExpression
         if ((current == SPACE && next == SPACE) || (current == SPACE && next == PARENTHESE_LEFT) ||
-            (current == SPACE && next == PARENTHESE_RIGHT) || (current == TAB))
+            (current == SPACE && next == PARENTHESE_RIGHT))
             continue;
         // next is a printable and correct character between a comma and the letter z
         else if (current == PARENTHESE_LEFT && START_CORRECT_CHAR <= next && next <= END_CORRECT_CHAR)
@@ -57,8 +57,28 @@ string parseSEXP(const string& sexpExpression) {
     }
     return parsedExpression;
 }
-
+int count = 4; // TODO : Remove this
 // TODO : Pretty print the s-expression
-void printSEXP(const string& parsedExpression) {
-    cout << parsedExpression;
+// From https://stackoverflow.com/questions/1649027/how-do-i-print-out-a-tree-structure
+void printSEXP(string parsedExpression, string indentation, bool last) {
+    int i = 0;
+    while (i != 8) {
+        char current = parsedExpression[0];
+        char next = parsedExpression[1];
+        if (current == PARENTHESE_LEFT && next == PARENTHESE_LEFT) {
+            count--;
+            cout << indentation << parsedExpression[0] << endl;
+            parsedExpression.erase(parsedExpression[0]);
+        } else if (current == PARENTHESE_RIGHT) {
+            count++;
+            cout << indentation << parsedExpression[0] << endl;
+            parsedExpression.erase(parsedExpression[0]);
+        } else {
+            count--;
+            cout << indentation << parsedExpression.substr(0, 12) << endl;
+            parsedExpression.erase(0, 12);
+        }
+        indentation += last ? "   " : "|  ";
+        i++;
+    }
 }
