@@ -20,11 +20,11 @@ To run the SEXP-Parser on Windows with CMake, first CMake needs to be installed:
 
 First, complete the two upper dialog boxes: 
 
-![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake-gui/cmake-gui-windows-1.PNG)
+![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-1.PNG)
 
 After, click on the button ```Configure``` and choose the MinGW Makefiles:
 
-![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake-gui/cmake-gui-windows-2.PNG)
+![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-2.PNG)
 
 Then, click on ```Generate```. Now, the build folder should contain a generated Makefile. To build and generate the executable file SEXP-Parser.exe, type in the command ```make``` inside a command prompt at the Makefile location, which is ```SEXP-Parser/build```. To execute the source code, simply execute the ```SEXP-Parser.exe``` file. 
 
