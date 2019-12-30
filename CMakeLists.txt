@@ -8,7 +8,10 @@
 cmake_minimum_required(VERSION 3.14)
 project(SEXP_Parser)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Werror -pedantic -O3 -s")
+set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} -Werror -pedantic -O3 -s")
 
 include_directories(.)
 include_directories(examples)
