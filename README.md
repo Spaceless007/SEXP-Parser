@@ -1,16 +1,26 @@
 # Introduction
 
-This project is a parser for s-expressions in C/C++. It was done by Nathanaël Beaudoin-Dion in the holiday period of 2019 for the company GHGSat. [Enter here features, cross-plateform, etc.]
+This project is a parser for s-expressions in C/C++. It was done by Nathanaël Beaudoin-Dion in the holiday period of 2019-2020 for the company GHGSat. This parser can be compiled and executed with CMake on any platform. Also, it supports cross-compilation with CMake. 
+
+This README explains how to use and execute the SEXP-Parser on Windows and on Linux. After, it will go through the methodology on how the project was made and developped, to finish with improvements that could be made for the parser, what I learned throughout the process and difficulties encountered.
 
 # How to use the parser
 
+- The examples folder contains .sexp files the project can parse
+- The src folder contains the source code
+- THE BUILD FOLDER ?
+
 ## Running the project
+
+The SEXP-Parser can be compiled and executed with CMake on Windows, Linux with or without an IDE.
 
 ### CLion
 
 This project was made using the CLion IDE by JetBrains (https://www.jetbrains.com/). The project can be compiled, executed and debugged with this IDE using the CMakeList file in the repository and any toolchain compatible with the machine running the project. Since this project was made using Windows 10, the toolchain used was MinGW. See this tutorial on how to setup CLion with MinGW on Window: https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.html. 
 
 ### Windows
+
+The next subsections explain how to compile and cross-compile with Windows.
 
 #### Compilation
 
@@ -37,7 +47,7 @@ After, it is the same procedure as the compilation showned above: click on ```Ge
 
 ### Linux
 
-### Raspberry Pi
+The next subsections explain how to compile and cross-compile with Linux.
 
 # Methodology
 
@@ -47,20 +57,21 @@ Since this was a small project, the research and the architecture for this proje
 
 To start with, research on symbolic expressions explains they were popularized by the programming language Lisp. They are represented by binary trees. Since they are represented by trees, I thought about implementing a tree for this parser. Thing is, the more I thought about it, the more it seemed overkill. Trees are usefull when we want to search en element, when we want to reorganise the tree, to remove certain elements, and many other features. Since this project doesn't use these features, it is not necessary to implement a tree for the parser. 
 
-## 2. Architecture
+## 2. Architecture and implementation
 
-Considering the parser was not going to be implemented with binary trees, there wasn't a need to go for an oriented-object source code since the SEXP-Parser only needed three functionnality: read .sexp files, parse the files and print the resulting s-expression. With this in mind, *((CHANGER LE THAT IN MIND))* the project is a procedural C++ program with one main file, one other .cpp file (with it's corresponding header file) and one makefile and CMakeList to build the project. 
+Considering the parser was not going to be implemented with binary trees, there wasn't a need to go for an oriented-object source code since the SEXP-Parser only needed three functionnality: read .sexp files, parse the files and print the resulting s-expression. Hence, the project is a procedural C++ program with one main file, one other .cpp file (with it's corresponding header file) containing the necessary functions and one CMakeList to build the project.
 
-## 3. Implementation
-
-## 4. Documentation
+## 3. Documentation
 
 The documentation for the source files of the project is following the Doxygen standard. It takes avantages of the decorators (example : @param) to make it visually pleasing. Also, these decorators are supported in the CLion IDE, which can be really usefull when a project starts to get bigger, since it is easier to see the description of the function, the parameters and the return value. 
 
-## 5. Cross-platforming
+## 4. How to improve the parser
 
-# Conclusion and How to improve the parser
-
+This project can be improved in many ways:
 - Faire script python pour compilation et cross-compilation de CMake sans IDE.
+- Ajout parse the folder dans example
 
 [Conclude, talk about the project, what I learned, the difficulties, etc.] 
+
+# What I learned and difficulties encountered
+
