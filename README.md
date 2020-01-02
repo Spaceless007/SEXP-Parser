@@ -10,7 +10,6 @@ This README explains how to use and execute the SEXP-Parser on Windows and on Li
 - The characters from value 40 ("("), 41 (")"), 44 (",") to 122 ("z") in the ASCII table are accepted and parsed
 - The parsed s-expressions contains "d:" and "v:" to clearly indicate the data-type and value element
 - The src folder contains the source code
-- THE BUILD FOLDER ?//////////////////////////////////////////////////////
 
 ## Running the project
 
@@ -18,38 +17,54 @@ The SEXP-Parser can be compiled and executed with CMake on Windows, Linux with o
 
 ### CLion
 
-This project was made using the CLion IDE by JetBrains (https://www.jetbrains.com/). The project can be compiled, executed and debugged with this IDE using the CMakeList file in the repository and any toolchain compatible with the machine running the project. Since this project was made using Windows 10, the toolchain used was MinGW. See this tutorial on how to setup CLion with MinGW on Windows: https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.html. 
+This project was made using the CLion IDE by JetBrains (https://www.jetbrains.com/). The project can be compiled, executed and debugged with this IDE using the CMakeList file in the repository and any toolchain compatible with the machine running the project. 
 
-### Windows
+#### Windows
 
-The next subsections explains how to compile and cross-compile with Windows.
+To download CLion on Windows, go on the official website of JetBains. For the toolchain, I recommend to use MinGW with CLion on Windows. See this tutorial on how to setup CLion with MinGW on Windows: https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.html. 
+
+Here is the settings for the toolchain on Windows:
+![Toolchain-Windows](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/clion/toolchain-setting-windows.PNG)
+
+#### Linux
+
+CLion can be downloaded on Linux via command line (see https://www.jetbrains.com/help/clion/installation-guide.html), via internet on the official website of JetBains or via a software installer on Ubuntu. For the toolchain, I recommand to use the default.
+
+Here is the settings for the toolchain on Linux Ubuntu:
+![Toolchain-Linux](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/clion/toolchain-setting-linux.png)
+
+### CMake-GUI
+
+The next subsections explains how to compile and cross-compile with the graphical tool of CMake. Either on Windows or Linux, it needs the same application and works the same way. From Windows, CMake-GUI is downloaded when CMake is downloaded. For Linux on Ubuntu, the software installer user interface can be used.
 
 #### Compilation
 
-To run the SEXP-Parser on Windows with CMake, first CMake needs to be installed: https://cmake.org/download/. Afterward, the project can be executed with the help of CMake-GUI provided by CMake when it is installed.
+To run the SEXP-Parser with CMake-GUI, first CMake needs to be installed: https://cmake.org/download/. Afterward, the project can be executed with the help of CMake-GUI provided by CMake when it is installed.
 
 First, complete the two upper dialog boxes (NOTE: for the build directory, it is recommanded to create a new one named ```build```): 
-![CMake-GUI-Windows](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-1.PNG)
+![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-1.PNG)
 
 After, click on the button ```Configure```, choose the ```MinGW Makefiles``` and the ```Use default native compilers``` option:
-![CMake-GUI-Windows](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-2.PNG)
+![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-2.PNG)
 
 Then, click on ```Generate```. Now, the build folder should contain a generated Makefile. To build and generate the executable file SEXP-Parser.exe, type in the command ```make``` inside a command prompt at the Makefile location, which is ```SEXP-Parser/build```. To execute the source code, simply execute the ```SEXP-Parser.exe``` file. 
 
 #### Cross-Compilation
 
-To cross-compile with Windows, the CMake-GUI is also needed.
+Like it is showned for the compilation on the subsection above, complete the two upper dialog boxes. Then, click on the ```Configure``` button and choose also the MinGW Makefiles. But, instead, choose the ```Specify options for cross-compiling```. With this tool, CMake can cross-compile with any compilers.
 
-Like it is showned for the compilation on Windows subsection above, complete the two upper dialog boxes. Then, click on the ```Configure``` button and choose also the MinGW Makefiles. But, instead, choose the ```Specify options for cross-compiling```. With this tool, CMake can cross-compile with any compilers. Linux ARM based toolchains can be downloaded here: https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads. 
-
-Here is an example how a cross-compilation from Windows to Linux AArch64 GNU/Linux target (aarch64-none-linux-gnu):
+Here is an example of Windows hosted cross-compilation to a Linux AArch64 GNU/Linux target (aarch64-none-linux-gnu):
 ![CMake-GUI-CrossCompilation](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-crosscompile.PNG)
 
 After, it is the same procedure as the compilation showned above: click on ```Generate```, execute the command ```make``` in a command prompt and execute the ```SEXP-Parser``` file.
 
-### Linux
-
-The next subsections explain how to compile and cross-compile with Linux.
+Link to various toolchains for cross-compiling that can be used with the CMake-GUI:
+- Build for Linux ARM based from various sources: https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
+- Build for Raspberry Pi from Linux: https://github.com/raspberrypi/tools/tree/master/arm-bcm2708
+  - For Pi 1, Zero, Zero W use the ```bcmrpi```
+  - For Pi 2, 3, 3+ use the ```bcm2709```
+  - For Pi 4 use the ```bcm2711```
+  - To cross-compile using only command lines without the CMake-GUI and more, see the section on cross-compiling of the official documentation of Raspberry Pi: https://www.raspberrypi.org/documentation/linux/kernel/building.md
 
 # Methodology
 
