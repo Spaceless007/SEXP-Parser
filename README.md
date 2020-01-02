@@ -7,7 +7,7 @@ This README explains how to use and execute the SEXP-Parser on Windows and on Li
 # How to use the parser
 
 - The examples folder contains .sexp files the project can parse, where the parsed files can be choosed by the user when the project is executed
-- The characters from value 40 ("("), 41 (")"), 44 (",") to 122 ("z") in the ASCII table are accepted and parsed
+- The characters of value of 40 ("("), 41 (")") and from 44 (",") to 122 ("z") in the ASCII table are accepted and parsed
 - The parsed s-expressions contains "d:" and "v:" to clearly indicate the data-type and value element
 - The src folder contains the source code
 
@@ -28,7 +28,7 @@ Here is the settings for the toolchain on Windows:
 
 #### Linux
 
-CLion can be downloaded on Linux via command line (see https://www.jetbrains.com/help/clion/installation-guide.html), via internet on the official website of JetBains or via a software installer on Ubuntu. For the toolchain, I recommand to use the default.
+CLion can be downloaded on Linux via command line (see https://www.jetbrains.com/help/clion/installation-guide.html), via internet on the official website of JetBains or via a software installer on Ubuntu. For Linux, I recommand to use the default toolchain.
 
 Here is the settings for the toolchain on Linux Ubuntu:
 ![Toolchain-Linux](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/clion/toolchain-setting-linux.png)
@@ -65,6 +65,8 @@ Link to various toolchains for cross-compiling that can be used with the CMake-G
   - For Pi 2, 3, 3+ use the ```bcm2709```
   - For Pi 4 use the ```bcm2711```
   - To cross-compile using only command lines without the CMake-GUI and more, see the section on cross-compiling of the official documentation of Raspberry Pi: https://www.raspberrypi.org/documentation/linux/kernel/building.md
+- Build for BeagleBoard from Linux: https://github.com/beagleboard/linux
+  - Follow the instructions in the section on cross-compiling https://www.itdev.co.uk/blog/building-linux-kernel-cross-compiling-beaglebone-black
 
 # Methodology
 
@@ -80,16 +82,19 @@ Considering the parser is not implemented with binary trees, there isn't a need 
 
 ## 3. Documentation
 
-The documentation for the source files of the project is following the Doxygen standard. It takes avantages of the decorators (example : @param) to make it visually pleasing. Also, these decorators are supported in the CLion IDE, which can be really usefull since it is easier to see the description of the function, the parameters, the return value and much more. 
+The documentation for the source files of the project is following the Doxygen standard. It takes avantages of the decorators (example: @param) to make it visually pleasing. Also, these decorators are supported in the CLion IDE, which can be really usefull since it is easier to see the description of the function, the parameters, the return value and much more. 
 
-# How to improve the parser
+# How to improve the project
 
-This project can be improved in many ways:
-- Faire script python pour compilation et cross-compilation de CMake sans IDE
-- Implementer le support de "" dans les expressions pour ajouter des espaces
-- Avoir un print plus beau
+- It takes a lot of steps to cross-compile with CMake-GUI, which is why bash scripts for each usefull cases could be implemented to accelerate the cross compilation process.
+- The parser doesn't implement the use of "", where it could be used to add elements with spaces inside their values
+- The print of s-expressions is not pretty, it could be prettier (for example, print it like a tree)
+- I mix C and C++ coding, so some parts of codes could be re-written to either have a full C code or C++ code.
 
 # What I learned and difficulties encountered
-- Apprendre à faire une application de A à Z par soi-même, premier projet de code individuel
-- Apprendre CMake, compilateurs, cross-compilers, toolchains
-- Difficultés avec ce dernier point, surtout cross-compiling
+
+- This project was the first coding project I made from start to finish alone, setting up CMake, CLion, etc. Generally, I am aware of everything about a project from a high level, and I participate in details on certain aspects. But I rarely go through the hole process and every line of codes in details alone. Thereby, it helped me to bonify my knowledge on aspects I didn't go through in details on past projects, for example, how to compile the project with CMake or Makefile.
+- Learned a lot on everything about CMake and compilation in general. I had a vague idea how the compilation worked in the past, but now I understand it more clearly. 
+- Since I didn't understand well enough CMake, the compilation process, the importance of toolchains, it took me a while to find the ressources and to understand how to cross-compile.
+- I did not test the cross-compile builds for Raspberry Pi, Beagleboard and ARM qemu emulator since I didn't have a Pi or BB, and had limited access to a Linux computer.
+- I did not understand how to cross-compile for ARM qemu emulator.
