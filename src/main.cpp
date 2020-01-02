@@ -8,7 +8,6 @@
 #include <cstdlib>
 #include <string>
 #include <iostream>
-#include <dirent.h>
 
 /// SEXP-PARSER INCLUDES
 #include "sexp-parser.hpp"
