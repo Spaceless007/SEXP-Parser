@@ -1,5 +1,5 @@
 /***********************************************************************************
- * @brief The header file containing every functions to parse an s-expression from a .sexp file
+ * @brief The header file containing every functions to parse an s-expression from a file
  * @author Nathanaël Beaudoin-Dion
  * @date December 27th 2019
  ***********************************************************************************/
@@ -13,8 +13,8 @@ const char PARENTHESE_LEFT = '(';
 const char PARENTHESE_RIGHT = ')';
 const char SPACE = ' ';
 const char QUOTE = '"'; // TODO : To implement
-const char START_CORRECT_CHAR = 44; // is a comma
-const char END_CORRECT_CHAR = 122; // is the letter z
+const char START_CORRECT_CHAR = ',';
+const char END_CORRECT_CHAR = 'z';
 
 static const char* S_EXPRESSIONS_DIRECTORY = "../examples/";
 
@@ -27,7 +27,7 @@ const string VALUE_ELEMENT = "v:";
 /** Function : string findFileSEXP(const char*)
  *  @brief Parse and print the file names in a directory and let the user choose one
  *  @param the name of the directory containing the s-expression files
- *  @return the name of the file selected by the user
+ *  @return the name of the file selected by the user contained in a string
  *  @note
      * In c++ 17, there is an official way to do it with std::filesystem, but through my research I found that some
      * compilers don't support this feature, which is why I didn't use std::filesystem
