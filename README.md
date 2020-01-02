@@ -6,21 +6,23 @@ This README explains how to use and execute the SEXP-Parser on Windows and on Li
 
 # How to use the parser
 
-- The examples folder contains .sexp files the project can parse
+- The examples folder contains .sexp files the project can parse, where the parsed files can be choosed by the user when the project is executed
+- The characters from value 40 ("("), 41 (")"), 44 (",") to 122 ("z") in the ASCII table are accepted and parsed
+- The parsed s-expressions contains "d:" and "v:" to clearly indicate the data-type and value element
 - The src folder contains the source code
-- THE BUILD FOLDER ?
+- THE BUILD FOLDER ?//////////////////////////////////////////////////////
 
 ## Running the project
 
-The SEXP-Parser can be compiled and executed with CMake on Windows, Linux with or without an IDE.
+The SEXP-Parser can be compiled and executed with CMake on Windows, Linux with or without an IDE. For Windows or Linux, a toolchain needs to be downloaded to compile the project (for Windows, MinGW was used during development of the parser). 
 
 ### CLion
 
-This project was made using the CLion IDE by JetBrains (https://www.jetbrains.com/). The project can be compiled, executed and debugged with this IDE using the CMakeList file in the repository and any toolchain compatible with the machine running the project. Since this project was made using Windows 10, the toolchain used was MinGW. See this tutorial on how to setup CLion with MinGW on Window: https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.html. 
+This project was made using the CLion IDE by JetBrains (https://www.jetbrains.com/). The project can be compiled, executed and debugged with this IDE using the CMakeList file in the repository and any toolchain compatible with the machine running the project. Since this project was made using Windows 10, the toolchain used was MinGW. See this tutorial on how to setup CLion with MinGW on Windows: https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.html. 
 
 ### Windows
 
-The next subsections explain how to compile and cross-compile with Windows.
+The next subsections explains how to compile and cross-compile with Windows.
 
 #### Compilation
 
@@ -51,27 +53,28 @@ The next subsections explain how to compile and cross-compile with Linux.
 
 # Methodology
 
-Since this was a small project, the research and the architecture for this project wasn't long to make *((CHANGER CETTE PHRASE))*. The next subsections explains the process to execute the task explained in the CHALLENGE.md document, starting by research and architecture, then completing the implmentation and documentation of the source code for the parser, to finally include the ability to run the parser on multiple platfroms. 
+The next subsections explains the process to develop the parser, starting by research and architecture, then completing the implmentation and documentation of the source code.
 
 ## 1. Research
 
-To start with, research on symbolic expressions explains they were popularized by the programming language Lisp. They are represented by binary trees. Since they are represented by trees, I thought about implementing a tree for this parser. Thing is, the more I thought about it, the more it seemed overkill. Trees are usefull when we want to search en element, when we want to reorganise the tree, to remove certain elements, and many other features. Since this project doesn't use these features, it is not necessary to implement a tree for the parser. 
+Symbolic expressions are represented by binary trees. Because of this, I thought about implementing a tree for this parser. Thing is, the more I thought about it, the more it seemed overkill. Trees are usefull when we want to search en element,to reorganise the tree, to remove certain elements, and many other features. Since this project doesn't use these features, it was not considered necessary to implement a tree for the parser.
 
 ## 2. Architecture and implementation
 
-Considering the parser was not going to be implemented with binary trees, there wasn't a need to go for an oriented-object source code since the SEXP-Parser only needed three functionnality: read .sexp files, parse the files and print the resulting s-expression. Hence, the project is a procedural C++ program with one main file, one other .cpp file (with it's corresponding header file) containing the necessary functions and one CMakeList to build the project.
+Considering the parser is not implemented with binary trees, there isn't a need to have an oriented-object source code since the SEXP-Parser only needed three main functionnalities: read .sexp files, parse the files and print the resulting s-expression. Hence, the project is a procedural C++ program with one main file, one other .cpp file (with it's corresponding .hpp file) containing the necessary functions and one CMakeList to build the project with CMake.
 
 ## 3. Documentation
 
-The documentation for the source files of the project is following the Doxygen standard. It takes avantages of the decorators (example : @param) to make it visually pleasing. Also, these decorators are supported in the CLion IDE, which can be really usefull when a project starts to get bigger, since it is easier to see the description of the function, the parameters and the return value. 
+The documentation for the source files of the project is following the Doxygen standard. It takes avantages of the decorators (example : @param) to make it visually pleasing. Also, these decorators are supported in the CLion IDE, which can be really usefull since it is easier to see the description of the function, the parameters, the return value and much more. 
 
-## 4. How to improve the parser
+# How to improve the parser
 
 This project can be improved in many ways:
-- Faire script python pour compilation et cross-compilation de CMake sans IDE.
-- Ajout parse the folder dans example
-
-[Conclude, talk about the project, what I learned, the difficulties, etc.] 
+- Faire script python pour compilation et cross-compilation de CMake sans IDE
+- Implementer le support de "" dans les expressions pour ajouter des espaces
+- Avoir un print plus beau
 
 # What I learned and difficulties encountered
-
+- Apprendre à faire une application de A à Z par soi-même, premier projet de code individuel
+- Apprendre CMake, compilateurs, cross-compilers, toolchains
+- Difficultés avec ce dernier point, surtout cross-compiling
