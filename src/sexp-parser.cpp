@@ -8,7 +8,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <cassert>
+#include <dirent.h>
 
 /// SEXP-PARSER INCLUDES
 #include "sexp-parser.hpp"
@@ -18,25 +18,43 @@ using namespace std;
 
 /// IMPLEMENTATION OF FUNCTIONS
 
+string findFileSEXP(const char* directoryName) {
+    string fileName;
+    DIR *directory = opendir(directoryName);
+    struct dirent *ent;
+    if (directory != nullptr) { // Search in the directory for
+        cout << "Choose the .sexp file you want to parse by typing the name: " << endl;
+        while ((ent = readdir(directory)) != nullptr) {
+            string file = static_cast<string>(ent->d_name);
+            if (file == "." || file == ".." ) // Don't print unnecessary file names
+                continue;
+            cout << "\t - " << file << endl;
+        }
+        cin >> fileName;
+        closedir(directory);
+    } else { // Could not open the directory
+        perror("");
+    }
+    return fileName;
+}
+
 string readFileSEXP(const string& fileName) {
     ifstream file;
     string fileTextTemp;
     string lineTemp;
-    file.open(fileName);
+    file.open(S_EXPRESSIONS_DIRECTORY + fileName);
     if (file.is_open()) {
         while (getline(file, lineTemp)) {
             fileTextTemp += lineTemp;
         }
         file.close();
-    } else {
-        cout << ERR_FILE_MESSAGE;
-        assert(file.is_open());
+    } else { // Could not open the file
+        perror("");
     }
     return fileTextTemp;
 }
 
 // TODO : Add "" implementation
-// TODO : Make binary expressions
 string parseSEXP(const string& sexpExpression) {
     string parsedExpression;
     for (unsigned int i = 0; i < sexpExpression.length() - 1; i++) {
@@ -44,7 +62,7 @@ string parseSEXP(const string& sexpExpression) {
         char next = sexpExpression[i + 1];
         // current is an unnecessary character which is not added to the parsedExpression
         if ((current == SPACE && next == SPACE) || (current == SPACE && next == PARENTHESE_LEFT) ||
-            (current == SPACE && next == PARENTHESE_RIGHT))
+            (current == SPACE && next == PARENTHESE_RIGHT) || (current == TABS))
             continue;
         // next is a printable and correct character between a comma and the letter z
         else if (current == PARENTHESE_LEFT && START_CORRECT_CHAR <= next && next <= END_CORRECT_CHAR)
@@ -57,29 +75,8 @@ string parseSEXP(const string& sexpExpression) {
     }
     return parsedExpression;
 }
-int count = 4; // TODO : Remove this
+
 // TODO : Pretty print the s-expression
-// From https://stackoverflow.com/questions/1649027/how-do-i-print-out-a-tree-structure
 void printSEXP(const string& parsedExpression) {
-//    int i = 0;
-//    while (i != 8) {
-//        char current = parsedExpression[0];
-//        char next = parsedExpression[1];
-//        if (current == PARENTHESE_LEFT && next == PARENTHESE_LEFT) {
-//            count--;
-//            cout << indentation << parsedExpression[0] << endl;
-//            parsedExpression.erase(parsedExpression[0]);
-//        } else if (current == PARENTHESE_RIGHT) {
-//            count++;
-//            cout << indentation << parsedExpression[0] << endl;
-//            parsedExpression.erase(parsedExpression[0]);
-//        } else {
-//            count--;
-//            cout << indentation << parsedExpression.substr(0, 12) << endl;
-//            parsedExpression.erase(0, 12);
-//        }
-//        indentation += last ? "   " : "|  ";
-//        i++;
-//    }
     cout << parsedExpression;
 }
