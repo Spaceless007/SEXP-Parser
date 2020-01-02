@@ -13,7 +13,7 @@ This README explains how to use and execute the SEXP-Parser on Windows and on Li
 
 ## Running the project
 
-The SEXP-Parser can be compiled and executed with CMake on Windows, Linux with or without an IDE. For Windows or Linux, a toolchain needs to be downloaded to compile the project (for Windows, MinGW was used during development of the parser). 
+The SEXP-Parser can be compiled and executed with CMake on Windows and Linux with an IDE (CLion) or with CMake-GUI.
 
 ### CLion
 
