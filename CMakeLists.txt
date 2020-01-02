@@ -13,8 +13,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Werror -pedantic -O3 -s")
 set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} -Werror -pedantic -O3 -s")
 
-include_directories(.)
-include_directories(examples)
 include_directories(src)
 
 add_executable(SEXP_Parser
