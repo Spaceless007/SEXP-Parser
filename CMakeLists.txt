@@ -17,5 +17,4 @@ include_directories(src)
 
 add_executable(SEXP_Parser
         src/main.cpp
-        src/sexp-parser.cpp
-        src/sexp-parser.hpp)
+        src/sexp-parser.cpp)
