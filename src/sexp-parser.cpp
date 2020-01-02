@@ -23,7 +23,7 @@ string findFileSEXP(const char* directoryName) {
     DIR *directory = opendir(directoryName);
     struct dirent *ent;
     if (directory != nullptr) { // Search in the directory for
-        cout << "Choose the .sexp file you want to parse by typing the name: " << endl;
+        cout << "Choose the .sexp file you want to parse by typing the name with the file extension: " << endl;
         while ((ent = readdir(directory)) != nullptr) {
             string file = static_cast<string>(ent->d_name);
             if (file == "." || file == ".." ) // Don't print unnecessary file names
@@ -49,7 +49,10 @@ string readFileSEXP(const string& fileName) {
         }
         file.close();
     } else { // Could not open the file
-        perror("");
+        string newFileName;
+        cout << "A problem happened with the selected file, re-enter the name" << endl;
+        cin >> newFileName;
+        fileTextTemp = readFileSEXP(newFileName); // Retry
     }
     return fileTextTemp;
 }
