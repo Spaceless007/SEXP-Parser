@@ -19,11 +19,10 @@ using namespace std;
 /// IMPLEMENTATION OF MAIN FUNCTION
 int main()
 {
-    // TODO : Make cin for the filename by giving choices
     string fileName = findFileSEXP(S_EXPRESSIONS_DIRECTORY);
     string sexpExpression = readFileSEXP(fileName);
     string parsedExpression = parseSEXP(sexpExpression);
-    cout << "Here is the parsed s-expression" << endl;
+    cout << "Here is the parsed s-expression: " << endl;
     printSEXP(parsedExpression);
 
 	return EXIT_SUCCESS;
