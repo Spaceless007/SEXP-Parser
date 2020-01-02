@@ -60,17 +60,14 @@ string parseSEXP(const string& sexpExpression) {
     for (unsigned int i = 0; i < sexpExpression.length() - 1; i++) {
         char current = sexpExpression[i];
         char next = sexpExpression[i + 1];
-        // current is an unnecessary character which is not added to the parsedExpression
-        if ((current == SPACE && next == SPACE) || (current == SPACE && next == PARENTHESE_LEFT) ||
-            (current == SPACE && next == PARENTHESE_RIGHT) || (current == TABS))
-            continue;
         // next is a printable and correct character between a comma and the letter z
-        else if (current == PARENTHESE_LEFT && START_CORRECT_CHAR <= next && next <= END_CORRECT_CHAR)
+        if (current == PARENTHESE_LEFT && START_CORRECT_CHAR <= next && next <= END_CORRECT_CHAR)
             parsedExpression += PARENTHESE_LEFT + DATA_TYPE_ELEMENT;
         else if (current == SPACE && START_CORRECT_CHAR <= next && next <= END_CORRECT_CHAR)
             parsedExpression += SPACE + VALUE_ELEMENT;
-        // current is a necessary character for the s-expression
-        else
+        // current is a printable and correct character
+        else if ((START_CORRECT_CHAR <= current && current <= END_CORRECT_CHAR) ||
+                 current == PARENTHESE_LEFT || current == PARENTHESE_RIGHT)
             parsedExpression += current;
     }
     return parsedExpression;

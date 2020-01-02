@@ -12,7 +12,6 @@ using namespace std;
 const char PARENTHESE_LEFT = '(';
 const char PARENTHESE_RIGHT = ')';
 const char SPACE = ' ';
-const char TABS = '\t';
 const char QUOTE = '"'; // TODO : To implement
 const char START_CORRECT_CHAR = 44; // is a comma
 const char END_CORRECT_CHAR = 122; // is the letter z
