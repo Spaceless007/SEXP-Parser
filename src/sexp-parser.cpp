@@ -58,22 +58,26 @@ string readFileSEXP(const string& fileName) {
 }
 
 // TODO : Add "" implementation
-string parseSEXP(const string& sexpExpression) {
-    string parsedExpression;
+string simplifySEXP(const string& sexpExpression) {
+    string simplifiedExpression;
     for (unsigned int i = 0; i < sexpExpression.length() - 1; i++) {
         char current = sexpExpression[i];
         char next = sexpExpression[i + 1];
         // next is a printable and correct character between a comma and the letter z
         if (current == PARENTHESE_LEFT && START_CORRECT_CHAR <= next && next <= END_CORRECT_CHAR)
-            parsedExpression += PARENTHESE_LEFT + DATA_TYPE_ELEMENT;
+            simplifiedExpression += PARENTHESE_LEFT + DATA_TYPE_ELEMENT;
         else if (current == SPACE && START_CORRECT_CHAR <= next && next <= END_CORRECT_CHAR)
-            parsedExpression += SPACE + VALUE_ELEMENT;
+            simplifiedExpression += SPACE + VALUE_ELEMENT;
         // current is a printable and correct character
         else if ((START_CORRECT_CHAR <= current && current <= END_CORRECT_CHAR) ||
                  current == PARENTHESE_LEFT || current == PARENTHESE_RIGHT)
-            parsedExpression += current;
+            simplifiedExpression += current;
     }
-    return parsedExpression;
+    return simplifiedExpression;
+}
+
+string parseSEXP(const string& simplifiedSEXP) {
+
 }
 
 // TODO : Pretty print the s-expression

@@ -20,7 +20,7 @@ int main()
 {
     string fileName = findFileSEXP(S_EXPRESSIONS_DIRECTORY);
     string sexpExpression = readFileSEXP(fileName);
-    string parsedExpression = parseSEXP(sexpExpression);
+    string parsedExpression = simplifySEXP(sexpExpression);
     cout << "Here is the parsed s-expression: " << endl;
     printSEXP(parsedExpression);
 

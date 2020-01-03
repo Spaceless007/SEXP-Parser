@@ -42,12 +42,19 @@ string findFileSEXP(const char* directoryName);
  **/
 string readFileSEXP(const string& fileName);
 
-/** Function : string parseSEXP(const string&)
- *  @brief Parses an s-expression and returns the parsed s-expression
+/** Function : string simplifySEXP(const string&)
+ *  @brief Removes incorrect characters of an s-expression and returns the simplified s-expression
  *  @param the raw s-expression
+ *  @return the simplified s-expression contained in a string
+ **/
+string simplifySEXP(const string& sexpExpression);
+
+/** Function : string parseSEXP(const string&)
+ *  @brief Parses a simplified s-expression and returns the parsed s-expression
+ *  @param the simplified s-expression
  *  @return the parsed s-expression contained in a string
  **/
-string parseSEXP(const string& sexpExpression);
+string parseSEXP(const string& simplifiedSEXP);
 
 /** Function : void printSEXP(const string&)
  *  @brief Print an s-expression on the standard output
