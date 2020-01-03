@@ -90,6 +90,7 @@ The documentation for the source files of the project is following the Doxygen s
 - The parser doesn't implement the use of "", where it could be used to add elements with spaces inside their values
 - The print of s-expressions is not pretty, it could be prettier (for example, print it like a tree)
 - I mix C and C++ coding, so some parts of codes could be re-written to either have a full C code or C++ code.
+- Support special characters like "é" with the UTF-8 encoding
 
 # What I learned and difficulties encountered
 
