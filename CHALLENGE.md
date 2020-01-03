@@ -6,8 +6,27 @@ This challenge is close to what your first mission would look like working at GH
 
 Write a simple C or C++ program which:
 
-* parses s-expression file given as input, it shall successfully parses `example.sexp`
-* print on stdout each element, its data-type and value
+* parses s-expression file given as input, it shall successfully parses example.sexp as a representation-object; this object should give an easy access to the different attributes on different levels; for example, the nlohmann/JSON library allows to create an object ; This requirement is not to support any object type but at least the example object given in example.sexp; e.g. this s-expression file could be parsed into following object:
+
+class Capture {
+  string header;
+  string id;
+  string name;
+  date timestamp;
+  class capture_settings;
+  class coordinates;
+};  
+
+* print on stdout each element, its data-type and value, e.g.
+
+Capture type:object
+    header type:string value:"image-01.raw"
+    id type:string value:"6zlQW000LK"
+    name type:string value:"1KDVQwb"
+    timestamp type:string value:"2019-10-23T11:50:04-04:00"
+    capture_settings type:object value: [...]
+    coordinates type:object value: [...]
+
 * is built from a Makefile or CMake with x86 and ARM targets
 * can run on a Raspberry Pi, or Beaglebone or ARM qemu emulator on a Linux desktop
 
