@@ -7,22 +7,67 @@
 /// NAMESPACE
 using namespace std;
 
-/// CONSTANTS FOR THE PARSER
+/// CONSTANTS
+
+static const char* S_EXPRESSIONS_DIRECTORY = "../examples/";
 
 const char PARENTHESE_LEFT = '(';
 const char PARENTHESE_RIGHT = ')';
 const char SPACE = ' ';
 const char QUOTE = '"'; // TODO : To implement
+const char TABS = '\t';
 const char START_CORRECT_CHAR = ',';
 const char END_CORRECT_CHAR = 'z';
 
-static const char* S_EXPRESSIONS_DIRECTORY = "../examples/";
+const string HEADER = "Capture";
+const string ID = "id";
+const string NAME = "name";
+const string TIMESTAMP = "timestamp";
+const string MODE = "mode";
+const string FREQUENCY = "frequency";
+const string FPS = "fps";
+const string EXPOSURE = "exposure";
+const string GAIN_R = "gain_r";
+const string GAIN_G = "gain_g";
+const string GAIN_B = "gain_b";
+const string LATITUDE = "latitude";
+const string LONGITUDE = "longitude";
+const string ALTITUDE = "altitude";
 
-// to explicitly tell the type of each element of the s-expression
-const string DATA_TYPE_ELEMENT = "d:";
-const string VALUE_ELEMENT = "v:";
+const string STRING_T = " type:string";
+const string UINT_T = " type:uint";
+const string FLOAT_T =" type:float";
+const string OBJECT_T = " type:object";
+const string VALUE = " value:";
 
-/// FUNCTIONS FOR THE PARSER
+/// STRUCTS
+
+struct Settings {
+    string mode;
+    unsigned int frequency;
+    unsigned int fps;
+    unsigned int exposure;
+    float gain_r;
+    float gain_g;
+    float gain_b;
+};
+
+struct Coordinates {
+    float latitude;
+    float longitude;
+    float altitude;
+};
+
+struct Capture {
+    string header;
+    string id;
+    string name;
+    string timestamp;
+    Settings settings;
+    Coordinates coordinates;
+};
+
+/// FUNCTIONS
 
 /** Function : string findFileSEXP(const char*)
  *  @brief Parse and print the file names in a directory and let the user choose one
@@ -49,15 +94,24 @@ string readFileSEXP(const string& fileName);
  **/
 string simplifySEXP(const string& sexpExpression);
 
+/** Function : string extractStringFromSEXP(const string&, const string&);
+ *  @brief Extracts a string from an s-expression simplified
+ *  @params
+    * simplifiedSEXP: the simplified s-expression
+    * element: the element from the s-expression to find it's value
+ *  @return the parsed s-expression contained in a Capture struct
+ **/
+string extractStringFromSEXP(const string& simplifiedSEXP, const string& element);
+
 /** Function : string parseSEXP(const string&)
  *  @brief Parses a simplified s-expression and returns the parsed s-expression
  *  @param the simplified s-expression
- *  @return the parsed s-expression contained in a string
+ *  @return the parsed s-expression contained in a Capture struct
  **/
-string parseSEXP(const string& simplifiedSEXP);
+Capture parseSEXP(const string& simplifiedSEXP);
 
-/** Function : void printSEXP(const string&)
+/** Function : void printSEXP(const Capture&)
  *  @brief Print an s-expression on the standard output
  *  @param the parsed s-expression
  **/
-void printSEXP(const string& parsedExpression);
+void printSEXP(const Capture& parsedExpression);
