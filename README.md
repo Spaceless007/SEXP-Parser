@@ -8,7 +8,30 @@ This README explains how to use and execute the SEXP-Parser on Windows and on Li
 
 - The examples folder contains .sexp files the project can parse, where the parsed files can be choosed by the user when the project is executed
 - The characters of value of 40 ("("), 41 (")") and from 44 (",") to 122 ("z") in the ASCII table are accepted and parsed
-- The parsed s-expressions contains "d:" and "v:" to clearly indicate the data-type and value element
+- The s-expression needs to have the same structure as the capture.sexp file, like so:
+```c++
+Capture {
+    string header;
+    string id;
+    string name;
+    string timestamp;
+    Settings {
+        string mode;
+        unsigned int frequency;
+        unsigned int fps;
+        unsigned int exposure;
+        float gain_r;
+        float gain_g;
+        float gain_b;
+    };
+    Coordinates {
+        float latitude;
+        float longitude;
+        float altitude;
+    };
+};
+```
+- The parsed s-expressions contains "type:" and "value:" to clearly indicate the data-type and value elements
 - The src folder contains the source code
 
 ## Running the project
