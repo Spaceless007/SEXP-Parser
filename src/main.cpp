@@ -18,12 +18,18 @@ using namespace std;
 /// IMPLEMENTATION OF MAIN FUNCTION
 int main()
 {
-    string fileName = findFileSEXP(S_EXPRESSIONS_DIRECTORY);
-    string sexpExpression = readFileSEXP(fileName);
-    string simplifiedExpression = simplifySEXP(sexpExpression);
-    Capture parsedExpression = parseSEXP(simplifiedExpression);
-    cout << "Here is the parsed s-expression: " << endl;
-    printSEXP(parsedExpression);
+    string res;
+    do {
+        string fileName = findFileSEXP(S_EXPRESSIONS_DIRECTORY);
+        string sexpExpression = readFileSEXP(fileName);
+        string simplifiedExpression = simplifySEXP(sexpExpression);
+        Capture parsedExpression = parseSEXP(simplifiedExpression);
+        cout << "Here is the parsed s-expression: " << endl;
+        printSEXP(parsedExpression);
+        // Check if user want to parse other files
+        cout << "Do you want to parse another file? [Y/n]" << endl << endl;
+        cin >> res;
+    } while (res[0] == 'Y');
 
-	return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
