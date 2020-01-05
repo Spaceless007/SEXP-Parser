@@ -16,6 +16,36 @@
 /// NAMESPACE
 using namespace std;
 
+/// CONSTANTS
+const char PARENTHESE_LEFT = '(';
+const char PARENTHESE_RIGHT = ')';
+const char SPACE = ' ';
+const char QUOTE = '"'; // TODO : To implement
+const char TABS = '\t';
+const char START_CORRECT_CHAR = ',';
+const char END_CORRECT_CHAR = 'z';
+
+const char* HEADER = "Capture";
+const char* ID = "id";
+const char* NAME = "name";
+const char* TIMESTAMP = "timestamp";
+const char* MODE = "mode";
+const char* FREQUENCY = "frequency";
+const char* FPS = "fps";
+const char* EXPOSURE = "exposure";
+const char* GAIN_R = "gain_r";
+const char* GAIN_G = "gain_g";
+const char* GAIN_B = "gain_b";
+const char* LATITUDE = "latitude";
+const char* LONGITUDE = "longitude";
+const char* ALTITUDE = "altitude";
+
+const char* STRING_T = " type:string";
+const char* UINT_T = " type:uint";
+const char* FLOAT_T =" type:float";
+const char* OBJECT_T = " type:object";
+const char* VALUE = " value:";
+
 /// IMPLEMENTATION OF FUNCTIONS
 
 string findFileSEXP(const char* directoryName) {

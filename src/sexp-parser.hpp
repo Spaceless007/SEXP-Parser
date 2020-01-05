@@ -8,37 +8,7 @@
 using namespace std;
 
 /// CONSTANTS
-
 static const char* S_EXPRESSIONS_DIRECTORY = "../examples/";
-
-const char PARENTHESE_LEFT = '(';
-const char PARENTHESE_RIGHT = ')';
-const char SPACE = ' ';
-const char QUOTE = '"'; // TODO : To implement
-const char TABS = '\t';
-const char START_CORRECT_CHAR = ',';
-const char END_CORRECT_CHAR = 'z';
-
-const string HEADER = "Capture";
-const string ID = "id";
-const string NAME = "name";
-const string TIMESTAMP = "timestamp";
-const string MODE = "mode";
-const string FREQUENCY = "frequency";
-const string FPS = "fps";
-const string EXPOSURE = "exposure";
-const string GAIN_R = "gain_r";
-const string GAIN_G = "gain_g";
-const string GAIN_B = "gain_b";
-const string LATITUDE = "latitude";
-const string LONGITUDE = "longitude";
-const string ALTITUDE = "altitude";
-
-const string STRING_T = " type:string";
-const string UINT_T = " type:uint";
-const string FLOAT_T =" type:float";
-const string OBJECT_T = " type:object";
-const string VALUE = " value:";
 
 /// STRUCTS
 
