@@ -2,11 +2,11 @@
 
 This project is a parser for s-expressions in C/C++. It was done by Nathanaël Beaudoin-Dion in the holiday period of 2019-2020 for the company GHGSat. This parser can be compiled and executed with CMake on any platform. Also, it supports cross-compilation with CMake. 
 
-This README explains how to use and execute the SEXP-Parser on Windows and on Linux. After, it will go through the methodology on how the project was made and developped, to finish with improvements that could be made for the parser, what I learned throughout the process and difficulties encountered.
+This README explains how to use and execute the SEXP-Parser on Windows and on Linux. After, it will go through the methodology on how the project was made and developed, to finish with improvements that could be made for the parser, what I learned throughout the process and difficulties encountered.
 
 # How to use the parser
 
-- The examples folder contains .sexp files the project can parse, where the parsed files can be choosed by the user when the project is executed
+- The examples folder contains .sexp files the project can parse, where the parsed files can be chosen by the user when the project is executed
 - The characters of value of 40 ("("), 41 (")") and from 44 (",") to 122 ("z") in the ASCII table are accepted and parsed
 - The s-expression needs to have the same structure as the capture.sexp file, like so:
 ```c++
@@ -51,7 +51,7 @@ Here is the settings for the toolchain on Windows:
 
 #### Linux
 
-CLion can be downloaded on Linux via command line (see https://www.jetbrains.com/help/clion/installation-guide.html), via internet on the official website of JetBains or via a software installer on Ubuntu. For Linux, I recommand to use the default toolchain.
+CLion can be downloaded on Linux via command line (see https://www.jetbrains.com/help/clion/installation-guide.html), via internet on the official website of JetBains or via a software installer on Ubuntu. For Linux, I recommend to use the default toolchain.
 
 Here is the settings for the toolchain on Linux Ubuntu:
 ![Toolchain-Linux](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/clion/toolchain-setting-linux.png)
@@ -64,7 +64,7 @@ The next subsections explains how to compile and cross-compile with the graphica
 
 To run the SEXP-Parser with CMake-GUI, first CMake needs to be installed: https://cmake.org/download/. Afterward, the project can be executed with the help of CMake-GUI provided by CMake when it is installed.
 
-First, complete the two upper dialog boxes (NOTE: for the build directory, it is recommanded to create a new one named ```build```): 
+First, complete the two upper dialog boxes (NOTE: for the build directory, it is recommended to create a new one named ```build```): 
 ![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-1.PNG)
 
 After, click on the button ```Configure```, choose the ```MinGW Makefiles``` and the ```Use default native compilers``` option:
@@ -74,12 +74,12 @@ Then, click on ```Generate```. Now, the build folder should contain a generated 
 
 #### Cross-Compilation
 
-Like it is showned for the compilation on the subsection above, complete the two upper dialog boxes. Then, click on the ```Configure``` button and choose also the MinGW Makefiles. But, instead, choose the ```Specify options for cross-compiling```. With this tool, CMake can cross-compile with any compilers.
+Like it is showed for the compilation on the subsection above, complete the two upper dialog boxes. Then, click on the ```Configure``` button and choose also the MinGW Makefiles. But, instead, choose the ```Specify options for cross-compiling```. With this tool, CMake can cross-compile with any compilers.
 
 Here is an example of Windows hosted cross-compilation to a Linux AArch64 GNU/Linux target (aarch64-none-linux-gnu):
 ![CMake-GUI-CrossCompilation](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-crosscompile.PNG)
 
-After, it is the same procedure as the compilation showned above: click on ```Generate```, execute the command ```make``` in a command prompt and execute the ```SEXP-Parser``` file.
+After, it is the same procedure as the compilation showed above: click on ```Generate```, execute the command ```make``` in a command prompt and execute the ```SEXP-Parser``` file.
 
 Link to various toolchains for cross-compiling that can be used with the CMake-GUI:
 - Build for Linux ARM based from various sources: https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
@@ -93,32 +93,33 @@ Link to various toolchains for cross-compiling that can be used with the CMake-G
 
 # Methodology
 
-The next subsections explains the process to develop the parser, starting by research and architecture, then completing the implmentation and documentation of the source code.
+The next subsections explains the process to develop the parser, starting by research and architecture, then completing the implementation and documentation of the source code.
 
 ## 1. Research
 
-Symbolic expressions are represented by binary trees. Because of this, I thought about implementing a tree for this parser. Thing is, the more I thought about it, the more it seemed overkill. Trees are usefull when we want to search en element,to reorganise the tree, to remove certain elements, and many other features. Since this project doesn't use these features, it was not considered necessary to implement a tree for the parser.
+Symbolic expressions are represented by binary trees. Because of this, I thought about implementing a tree for this parser. Thing is, the more I thought about it, the more it seemed overkill. Trees are useful when we want to search en element,to reorganise the tree, to remove certain elements, and many other features. Since this project doesn't use these features, it was not considered necessary to implement a tree for the parser.
 
 ## 2. Architecture and implementation
 
-Considering the parser is not implemented with binary trees, there isn't a need to have an oriented-object source code since the SEXP-Parser only needed three main functionnalities: read .sexp files, parse the files and print the resulting s-expression. Hence, the project is a procedural C++ program with one main file, one other .cpp file (with it's corresponding .hpp file) containing the necessary functions and one CMakeList to build the project with CMake.
+Considering the parser is not implemented with binary trees, there isn't a need to have an oriented-object source code since the SEXP-Parser only needed three main functionality: read .sexp files, parse the files and print the resulting s-expression. Hence, the project is a procedural C++ program with one main file, one other .cpp file (with it's corresponding .hpp file) containing the necessary functions and one CMakeList to build the project with CMake.
+
+The parser is implemented using strings to take advantage of their functions to parse the files. Since it is using strings, `iostream` seemed to be simpler to use. Even though compared to `cstdio` it is slower and takes more memory, it is not considered a problem since it is a simple and small program.
 
 ## 3. Documentation
 
-The documentation for the source files of the project is following the Doxygen standard. It takes avantages of the decorators (example: @param) to make it visually pleasing. Also, these decorators are supported in the CLion IDE, which can be really usefull since it is easier to see the description of the function, the parameters, the return value and much more. 
+The documentation for the source files of the project is following the Doxygen standard. It takes advantages of the decorators (example: @param) to make it visually pleasing. Also, these decorators are supported in the CLion IDE, which can be really useful since it is easier to see the description of the function, the parameters, the return value and much more. 
 
 # How to improve the project
 
-- It takes a lot of steps to cross-compile with CMake-GUI, which is why bash scripts for each usefull cases could be implemented to accelerate the cross compilation process.
+- It takes a lot of steps to cross-compile with CMake-GUI, which is why bash scripts for each useful cases could be implemented to accelerate the cross compilation process.
 - The parser doesn't implement the use of "", where it could be used to add elements with spaces inside their values
 - The print of s-expressions is not pretty, it could be prettier (for example, print it like a tree)
-- I mix C and C++ coding, so some parts of codes could be re-written to either have a full C code or C++ code.
 - Support special characters like "é" with the UTF-8 encoding
 
 # What I learned and difficulties encountered
 
-- This project was the first coding project I made from start to finish alone, setting up CMake, CLion, etc. Generally, I am aware of everything about a project from a high level, and I participate in details on certain aspects. But I rarely go through the hole process and every line of codes in details alone. Thereby, it helped me to bonify my knowledge on aspects I didn't go through in details on past projects, for example, how to compile the project with CMake or Makefile.
+- This project was the first coding project I made from start to finish alone, setting up CMake, CLion, etc. Generally, I am aware of everything about a project from a high level, and I participate in details on certain aspects. But I rarely go through the hole process and every line of codes in details alone. Thereby, I learned on aspects I didn't go through in details on past projects, for example, how to compile the project with CMake or Makefile.
 - Learned a lot on everything about CMake and compilation in general. I had a vague idea how the compilation worked in the past, but now I understand it more clearly. 
-- Since I didn't understand well enough CMake, the compilation process, the importance of toolchains, it took me a while to find the ressources and to understand how to cross-compile.
+- Since I didn't understand well enough CMake, the compilation process, the importance of toolchains, it took me a while to find the resources and to understand how to cross-compile.
 - I did not test the cross-compile builds for Raspberry Pi, Beagleboard and ARM qemu emulator since I didn't have a Pi or BB, and had limited access to a Linux computer.
 - I did not understand how to cross-compile for ARM qemu emulator.
