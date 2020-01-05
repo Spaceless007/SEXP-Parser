@@ -20,13 +20,15 @@ int main()
 {
     string res;
     do {
+        // Parse one file
         string fileName = findFileSEXP(S_EXPRESSIONS_DIRECTORY);
         string sexpExpression = readFileSEXP(fileName);
         string simplifiedExpression = simplifySEXP(sexpExpression);
         Capture parsedExpression = parseSEXP(simplifiedExpression);
         cout << "Here is the parsed s-expression: " << endl;
         printSEXP(parsedExpression);
-        // Check if user want to parse other files
+
+        // Check if user want to parse another file
         cout << endl << "Do you want to parse another file? [Y/n]" << endl;
         cin >> res;
     } while (res[0] == 'Y');
