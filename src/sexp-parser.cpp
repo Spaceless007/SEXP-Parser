@@ -33,7 +33,8 @@ string findFileSEXP(const char* directoryName) {
         cin >> fileName;
         closedir(directory);
     } else { // Could not open the directory
-        perror("");
+        cout << "Could not open the directory, change the directory name in the source code";
+        exit(EXIT_FAILURE);
     }
     return fileName;
 }
