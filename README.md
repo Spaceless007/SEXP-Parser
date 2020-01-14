@@ -54,7 +54,7 @@ Here is the settings for the toolchain on Windows:
 CLion can be downloaded on Linux via command line (see https://www.jetbrains.com/help/clion/installation-guide.html), via internet on the official website of JetBains or via a software installer on Ubuntu. For Linux, I recommend to use the default toolchain.
 
 Here is the settings for the toolchain on Linux Ubuntu:
-![Toolchain-Linux](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/clion/toolchain-setting-linux.png)
+![Toolchain-Linux](https://github.com/Spaceless007/SEXP-Parser/blob/master/resources/clion/toolchain-setting-linux.png)
 
 ### CMake-GUI
 
@@ -65,10 +65,10 @@ The next subsections explains how to compile and cross-compile with the graphica
 To run the SEXP-Parser with CMake-GUI, first CMake needs to be installed: https://cmake.org/download/. Afterward, the project can be executed with the help of CMake-GUI provided by CMake when it is installed.
 
 First, complete the two upper dialog boxes (NOTE: for the build directory, it is recommended to create a new one named ```build```): 
-![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-1.PNG)
+![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/resources/cmake/cmake-gui-windows-1.PNG)
 
 After, click on the button ```Configure```, choose the ```MinGW Makefiles``` and the ```Use default native compilers``` option:
-![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-windows-2.PNG)
+![CMake-GUI](https://github.com/Spaceless007/SEXP-Parser/blob/master/resources/cmake/cmake-gui-windows-2.PNG)
 
 Then, click on ```Generate```. Now, the build folder should contain a generated Makefile. To build and generate the executable file SEXP-Parser.exe, type in the command ```make``` inside a command prompt at the Makefile location, which is ```SEXP-Parser/build```. To execute the source code, simply execute the ```SEXP-Parser.exe``` file. 
 
@@ -77,7 +77,7 @@ Then, click on ```Generate```. Now, the build folder should contain a generated 
 Like it is showed for the compilation on the subsection above, complete the two upper dialog boxes. Then, click on the ```Configure``` button and choose also the MinGW Makefiles. But, instead, choose the ```Specify options for cross-compiling```. With this tool, CMake can cross-compile with any compilers.
 
 Here is an example of Windows hosted cross-compilation to a Linux AArch64 GNU/Linux target (aarch64-none-linux-gnu):
-![CMake-GUI-CrossCompilation](https://github.com/Spaceless007/SEXP-Parser/blob/master/ressources/cmake/cmake-gui-crosscompile.PNG)
+![CMake-GUI-CrossCompilation](https://github.com/Spaceless007/SEXP-Parser/blob/master/resources/cmake/cmake-gui-crosscompile.PNG)
 
 After, it is the same procedure as the compilation showed above: click on ```Generate```, execute the command ```make``` in a command prompt and execute the ```SEXP-Parser``` file.
 
